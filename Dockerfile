@@ -7,9 +7,7 @@ COPY restore.sh .
 RUN chmod +x backup.sh
 RUN chmod +x restore.sh
 
-RUN apt update && apt install python3 curl -y
-
-RUN curl https://bootstrap.pypa.io/get-pip.py | python3
+RUN apt update && apt install python3 curl python3-pip -y
 RUN pip install --upgrade b2
 
 
