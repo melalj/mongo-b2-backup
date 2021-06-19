@@ -8,7 +8,7 @@ RUN chmod +x backup.sh
 RUN chmod +x restore.sh
 
 RUN apt update && apt install python3 curl python3-pip -y
-RUN pip install --upgrade b2
+RUN pip3 install --upgrade b2
 
 
 ENV RESTORE_ARCHIVE_NAME ""
