@@ -20,7 +20,7 @@ while /bin/true; do
     --uri "$MONGODB_URI"
 
   echo "[$SCRIPT_NAME] Uploading ${ARCHIVE_NAME} to S3 bucket..."
-  b2 upload-file --sha1 $(sha1sum $ARCHIVE_NAME | awk '{print $1}') ${B2_BUCKET} $ARCHIVE_NAME $ARCHIVE_NAME
+  b2 upload-file --sha1 --noProgress $(sha1sum $ARCHIVE_NAME | awk '{print $1}') ${B2_BUCKET} $ARCHIVE_NAME $ARCHIVE_NAME
 
   echo "[$SCRIPT_NAME] Cleaning up compressed archive..."
   rm "$ARCHIVE_NAME"
