@@ -7,7 +7,7 @@ COPY restore.sh .
 RUN chmod +x backup.sh
 RUN chmod +x restore.sh
 
-RUN apt update && apt install python3 curl python3-pip -y
+RUN apt update && apt install python3 curl python3-pip cron -y
 RUN pip3 install --upgrade b2
 
 
@@ -21,4 +21,10 @@ ENV B2_BUCKET ""
 ENV B2_ACCOUNT_ID ""
 ENV B2_ACCESS_KEY ""
 
-ENTRYPOINT ["bash", "/scripts/backup.sh"]
+RUN touch /var/log/cron.log
+
+# Setup cron job
+RUN (crontab -l ; echo "0 12 * * * /bin/bash /scripts/backup.sh >> /var/log/cron.log 2>&1") | crontab
+
+# Run the command on container startup
+ENTRYPOINT cron && tail -f /var/log/cron.log

@@ -1,5 +1,9 @@
 # Schedule MongoDB Backup to B2 BackBlaze
 
+By default the script will run every day at 12PM UTC.
+
+If you'd like to run specific tasks:
+
 ## Backup
 
 ```sh
@@ -10,6 +14,8 @@ MONGODB_URI="mongodb://..."
 B2_BUCKET=""
 B2_ACCOUNT_ID=""
 B2_ACCESS_KEY=""
+
+# Change the ENTRYPOINT to 
 /scripts/backup.sh
 ```
 
@@ -24,5 +30,7 @@ MONGODB_URI="mongodb://..."
 B2_BUCKET=""
 B2_ACCOUNT_ID=""
 B2_ACCESS_KEY=""
+
+# Change the ENTRYPOINT to 
 /scripts/restore.sh
 ```
