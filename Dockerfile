@@ -21,10 +21,10 @@ ENV B2_BUCKET ""
 ENV B2_ACCOUNT_ID ""
 ENV B2_ACCESS_KEY ""
 
-RUN touch /var/log/cron.log
-
 # Setup cron job
-RUN (crontab -l ; echo "0 12 * * * /bin/bash /scripts/backup.sh >> /var/log/cron.log 2>&1") | crontab
+RUN touch /var/log/cron.log
+RUN printenv | sed 's/^\(.*\)$/export \1/g' > /scripts/project_env.sh
+RUN (crontab -l ; echo "0 12 * * * . $HOME/.profile; . /scripts/project_env.sh; /bin/bash /scripts/backup.sh >> /var/log/cron.log 2>&1") | crontab
 
 # Run the command on container startup
 ENTRYPOINT cron && tail -f /var/log/cron.log
