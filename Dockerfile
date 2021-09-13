@@ -4,8 +4,10 @@ WORKDIR /scripts
 
 COPY backup.sh .
 COPY restore.sh .
+COPY entrypoint.sh .
 RUN chmod +x backup.sh
 RUN chmod +x restore.sh
+RUN chmod +x entrypoint.sh
 
 RUN apt update && apt install python3 curl python3-pip cron -y
 RUN pip3 install --upgrade b2
