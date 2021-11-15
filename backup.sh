@@ -10,7 +10,7 @@ echo "[$SCRIPT_NAME] Authorizing B2 account"
 
 
 echo "[$SCRIPT_NAME] Dumping MongoDB databases ${DB_NAME} to compressed archive..."
-/usr/bin/mongodump "${RESTORE_EXTRA_PARAMS}" \
+/usr/bin/mongodump ${BACKUP_EXTRA_PARAMS} \
 	--authenticationDatabase "$AUTH_DB_NAME" \
 	--db "$DB_NAME" \
 	--archive="$ARCHIVE_NAME" \

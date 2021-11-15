@@ -13,7 +13,7 @@ echo "[$SCRIPT_NAME] Downloading ${RESTORE_ARCHIVE_NAME} from ${B2_BUCKET}..."
 
 echo "[$SCRIPT_NAME] Restore MongoDB databases ${DB_NAME} from compressed archive..."
 
-/usr/bin/mongorestore "${RESTORE_EXTRA_PARAMS}" \
+/usr/bin/mongorestore ${RESTORE_EXTRA_PARAMS} \
 	--authenticationDatabase "$AUTH_DB_NAME" \
 	--nsInclude="$DB_NAME" \
 	--uri "$MONGODB_URI" \

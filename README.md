@@ -4,6 +4,8 @@ By default the script will run every day at 12PM UTC.
 
 If you'd like to run specific tasks:
 
+The tasks will run every day `0 12 * * *`
+
 ## Backup
 
 ```sh
